@@ -1,12 +1,17 @@
 @font-family: Helvetica, sans-serif;
-@header-padding: 10px 20px 5px 20px;
+@header-padding: 20px;
 @header-separator: false;
 @logo-font-size: 20px;
 @logo-font-weight: lighter;
 @nav-font-size: 15px;
 @nav-font-weight: normal;
 @nav-color: #888;
-@nav-hover-color: #eee;
+@nav-hover-color: rgba(0, 0, 0, 0.1);
+@portfolio-max-width: 450px;
+@portfolio-shadow: 0px 0px 5px #eee;
+@portfolio-nav-color: rgba(0, 0, 0, 0.1);
+@portfolio-nav-hover-color: #fff;
+@portfolio-nav-hover-bg-color: rgba(0, 0, 0, 0.2);
 
 @import (less) "css/normalize.css";
 
@@ -28,6 +33,7 @@ header {
     float: left;
     margin: 0;
     padding: @header-padding;
+    padding-right: 0;
     font-size: @logo-font-size;
     font-weight: @logo-font-weight;
     text-transform: uppercase;
@@ -51,9 +57,74 @@ header {
     a:hover {
       background-color: @nav-hover-color;
     }
+
+    .connect:after {
+      content: " \25BE"; // down-pointing caret
+    }
   }
 }
 
 header when (@header-separator) {
   border-bottom: solid 1px black;
+}
+
+.portfolio {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1100px;
+
+  .main {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: @portfolio-max-width;
+    box-shadow: @portfolio-shadow;
+  }
+
+  nav {
+    display: none;
+
+    .prev, .next {
+      position: absolute;
+      top: 0;
+      height: 100%;
+
+      span {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        width: 30px;
+        font-size: 30px;
+        padding: 10px 0px;
+        white-space: nowrap;
+        overflow: hidden;
+        word-spacing: 100px;
+        color: @portfolio-nav-color;
+      }
+    }
+
+    .prev:hover span, .next:hover span {
+      color: @portfolio-nav-hover-color;
+      background-color: @portfolio-nav-hover-bg-color;
+    }
+
+    .prev {
+      left: 0;
+      width: 20%;
+      span { left: 0; }
+      span:before { content: "\3008  "; } // left angle bracket
+    }
+
+    .next {
+      right: 0;
+      width: 80%;
+      span { right: 0; }
+      span:before { content: "\3009  "; } // right angle bracket
+    }
+  }
+}
+
+.portfolio:hover nav {
+  display: initial;
 }
