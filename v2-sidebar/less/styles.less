@@ -1,0 +1,44 @@
+@max-width: 1200px;
+@about-width: 200px;
+@about-bgcolor: #003;
+
+@import (less) "css/normalize.css";
+
+body {
+  background-color: @about-bgcolor;
+  font-family: Helvetica, sans-serif;
+}
+
+.body {
+  max-width: @max-width;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.about {
+  float: right;
+  width: @about-width;
+  background-color: @about-bgcolor;
+  color: white;
+  padding-bottom: 10000px;
+  margin-bottom: -10000px;
+}
+
+.pictures {
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: @about-width;
+
+  background-color: white;
+
+  figure {
+    margin: 0;
+
+    img {
+      display: block;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+}
