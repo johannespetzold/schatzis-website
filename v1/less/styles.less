@@ -1,13 +1,13 @@
 @font-family: Helvetica, sans-serif;
+@max-width: 800px;
 @header-padding: 20px;
 @header-separator: false;
 @logo-font-size: 20px;
 @logo-font-weight: lighter;
 @nav-font-size: 15px;
 @nav-font-weight: normal;
-@nav-color: #888;
-@nav-hover-color: rgba(0, 0, 0, 0.1);
-@portfolio-max-width: 450px;
+@nav-color: #005;
+@nav-hover-color: #f0f0ff;
 @portfolio-shadow: 0px 0px 5px #eee;
 @portfolio-nav-color: rgba(0, 0, 0, 0.1);
 @portfolio-nav-hover-color: #fff;
@@ -23,6 +23,12 @@
 
 body {
   font-family: @font-family;
+}
+
+.body {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: @max-width;
 }
 
 nav ul {
@@ -51,7 +57,7 @@ header {
       display: block;
       padding: @header-padding;
       padding-bottom: 100px;
-      margin-bottom: -100px;
+      margin-bottom: -80px;
       text-transform: lowercase;
       text-decoration: none;
       font-size: @nav-font-size;
@@ -76,13 +82,11 @@ header when (@header-separator) {
 .portfolio {
   position: relative;
   margin: 0 auto;
-  max-width: 1100px;
 
   .main {
     display: block;
     margin: 0 auto;
     width: 100%;
-    max-width: @portfolio-max-width;
     box-shadow: @portfolio-shadow;
   }
 
@@ -93,6 +97,8 @@ header when (@header-separator) {
       position: absolute;
       top: 0;
       height: 100%;
+      width: 50%;
+      overflow: hidden;
 
       span {
         position: absolute;
@@ -101,7 +107,7 @@ header when (@header-separator) {
 
         width: 10px;
         font-size: 30px;
-        padding: 10px;
+        padding: 10px 40px;
         white-space: nowrap;
         overflow: hidden;
         word-spacing: 100px;
@@ -116,14 +122,12 @@ header when (@header-separator) {
 
     .prev {
       left: 0;
-      width: 20%;
       span { left: 0; text-indent: -19px; }
       span:before { content: "\3008  "; } // left angle bracket
     }
 
     .next {
       right: 0;
-      width: 80%;
       span { right: 0; }
       span:before { content: "\3009  "; } // right angle bracket
     }
