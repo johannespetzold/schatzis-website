@@ -1,36 +1,91 @@
-@max-width: 1200px;
-@about-width: 200px;
-@about-bgcolor: #003;
+@bgcolor: #003;
+@max-width: 1195px;
+@sidebar-width: 200px;
+@sidebar-separator-width: 1px;
+@sidebar-separator-color: lighten(@bgcolor, 80%);
+@share-icons-size: 25px;
 
 @import (less) "css/normalize.css";
 
 body {
-  background-color: @about-bgcolor;
-  font-family: Helvetica, sans-serif;
+  background-color: @bgcolor;
 }
 
 .body {
   max-width: @max-width;
   margin: 0 auto;
-  position: relative;
   overflow: hidden;
+  background-color: white;
 }
 
-.about {
-  float: right;
-  width: @about-width;
-  background-color: @about-bgcolor;
-  color: white;
+nav {
+  position: fixed;
+  top: 0;
+  right: 0; // dynamically updated
+  width: @sidebar-width;
   padding-bottom: 10000px;
   margin-bottom: -10000px;
+  border-left: solid @sidebar-separator-width @sidebar-separator-color;
+
+  h1, h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    text-align: center;
+  }
+
+  h1 {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-size: 30px;
+    text-transform: lowercase;
+  }
+
+  h2 {
+    margin-top: 0;
+    font-size: 20px;
+    text-transform: lowercase;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      padding: 3px;
+      overflow: hidden;
+      a {
+        display: block;
+        width: @share-icons-size;
+        height: @share-icons-size;
+        background-size: @share-icons-size @share-icons-size;
+        text-indent: -1000px;
+      }
+
+      a.email {
+        background-image: url("../img/email.png");
+      }
+      a.instagram {
+        background-image: url("../img/instagram.png");
+      }
+      a.linkedin {
+        background-image: url("../img/linkedin.png");
+      }
+      a.facebook {
+        background-image: url("../img/facebook.png");
+      }
+      a.twitter {
+        background-image: url("../img/twitter.png");
+      }
+    }
+  }
 }
 
 .pictures {
   width: 100%;
   box-sizing: border-box;
-  padding-right: @about-width;
-
-  background-color: white;
+  padding-right: @sidebar-width + @sidebar-separator-width;
 
   figure {
     margin: 0;
@@ -38,7 +93,7 @@ body {
     img {
       display: block;
       max-width: 100%;
-      margin: 0 auto;
+      float: right;
     }
   }
 }
