@@ -13,12 +13,21 @@ body {
 
 .body {
   max-width: @max-width;
+  padding: 0 3.5%;
   margin: 0 auto;
   overflow: hidden;
-  background-color: white;
+}
+
+.clearfix() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 nav {
+  background-color: white;
   position: fixed;
   top: 0;
   right: 0; // dynamically updated
@@ -83,12 +92,14 @@ nav {
 }
 
 .pictures {
+  background-color: white;
   width: 100%;
   box-sizing: border-box;
   padding-right: @sidebar-width + @sidebar-separator-width;
 
   figure {
     margin: 0;
+    .clearfix;
 
     img {
       display: block;
