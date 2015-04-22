@@ -3,7 +3,7 @@
 @sidebar-width: 200px;
 @sidebar-separator-width: 1px;
 @sidebar-separator-color: lighten(@bgcolor, 80%);
-@contact-icon-size: 25px;
+@contact-icon-size: 30px;
 
 @import (less) "css/normalize.css";
 
@@ -62,16 +62,25 @@ nav {
 
     li {
       display: inline-block;
-      padding: 3px;
+      padding: 5px;
       overflow: hidden;
       a {
         display: block;
-        width: @contact-icon-size;
-        height: @contact-icon-size;
+        width: @contact-icon-size+5px;
+        height: @contact-icon-size+5px;
         background-size: @contact-icon-size @contact-icon-size;
+        background-repeat: no-repeat;
+        background-position: center center;
         text-indent: -1000px;
+
+        &:hover {
+          background-size: @contact-icon-size+5px @contact-icon-size+5px;
+        }
       }
 
+      a.phone {
+        background-image: url("../img/phone.png");
+      }
       a.email {
         background-image: url("../img/email.png");
       }
